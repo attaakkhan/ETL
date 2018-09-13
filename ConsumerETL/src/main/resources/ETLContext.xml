@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:elasticsearch="http://www.pilato.fr/schema/elasticsearch" 
+	xmlns:util="http://www.springframework.org/schema/util" 
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context.xsd
+	http://www.springframework.org/schema/tx
+	http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+	http://www.springframework.org/schema/util
+	http://www.springframework.org/schema/util/spring-util-3.0.xsd
+	http://www.pilato.fr/schema/elasticsearch
+	http://www.pilato.fr/schema/elasticsearch/elasticsearch-0.2.xsd">
+	
+	
+	<bean id="dataSourcePSql" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="${db.postgres.driver}" />
+		<property name="url" value="${db.postgres.url}" />
+		<property name="username" value="${db.postgres.username}" />
+		<property name="password" value="${db.postgres.password}" />
+		<property name="maxActive" value="${db.maxactive}" />
+		<property name="maxIdle" value="${db.maxidle}" />
+		<property name="maxWait" value="${db.maxwait}" />
+		<property name="defaultAutoCommit" value="true" />
+		<property name="removeAbandoned" value="true" />
+		<property name="removeAbandonedTimeout" value="${db.removeAbandonedTimeout}" />
+		<property name="validationQuery" value="select 1" />
+		<property name="testOnBorrow" value="true" />
+	
+	</bean>
+
+	<bean id="sessionFactoryPSql"
+		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource" ref="dataSourcePSql" />
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.jdbc.batch_size">1000</prop>
+				<prop key="hibernate.default_batch_fetch_size">1000</prop>
+				<prop key="hibernate.current_session_context_class">thread</prop>
+			</props>
+		</property>
+		<property name="packagesToScan">
+			<list>
+				<value>etl.pojo</value>	
+			</list>
+		</property>
+	</bean>
+
+	<bean id="transactionManagerPSql"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactoryPSql" />
+	</bean>
+	<tx:advice id="txAdvicePSql" transaction-manager="transactionManagerPSql">
+		<tx:attributes>
+			<tx:method name="get*" read-only="true" />
+			<tx:method name="find*" read-only="true" />
+			<tx:method name="*" propagation="REQUIRED" />
+		</tx:attributes>
+	</tx:advice>
+	<tx:advice id="txTestAdvicePSql" transaction-manager="transactionManagerPSql">
+		<tx:attributes>
+			<tx:method name="*" propagation="REQUIRED" />
+		</tx:attributes>
+	</tx:advice>
+	
+	<context:component-scan base-package="etl.*" />
+	
+	<context:annotation-config />
+	
+	<context:property-placeholder location="classpath:etl.properties" />
+
+</beans>

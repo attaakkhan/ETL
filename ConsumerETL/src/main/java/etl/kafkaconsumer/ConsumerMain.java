@@ -1,4 +1,4 @@
-package kafka.connection;
+package etl.kafkaconsumer;
 
 import java.io.IOException;
 
