@@ -1,4 +1,4 @@
-package kafka.connection;
+package etl.kafkaconsumer;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -18,7 +18,7 @@ public class ConfigurationProperties {
 	public ConsumerGroup getConsumersFromFile() throws IOException {
 		try {
 			Properties prop = new Properties();
-			String propFileName = "consumer.properties";
+			String propFileName = "etl.properties";
 			inputStream = getClass().getClassLoader().getResourceAsStream(propFileName);
 			if (inputStream != null) {
 				prop.load(inputStream);

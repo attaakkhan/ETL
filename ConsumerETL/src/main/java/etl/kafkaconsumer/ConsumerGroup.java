@@ -1,4 +1,4 @@
-package kafka.connection;
+package etl.kafkaconsumer;
 
 import java.util.ArrayList;
 import java.util.List;
