@@ -44,7 +44,7 @@ public class Producer {
 		return servers;
 	}
 
-	Producer() throws IOException {
+	public Producer() throws IOException {
 		Properties configProperties = new Properties();
 		configProperties.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, getPropertyFromFile("bootstrapservers"));
 		configProperties.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG,
