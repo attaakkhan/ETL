@@ -7,6 +7,7 @@ import org.apache.log4j.Logger;
 // TODO: Auto-generated Javadoc
 /**
  * The Class ConsumerMain.
+ * class for activating the ETL consumer in multithreads
  */
 public class ConsumerMain {
 

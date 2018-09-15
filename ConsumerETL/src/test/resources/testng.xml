@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://beust.com/testng/testng-1.0.dtd">
+
+<suite name="Consumer Test Suite" verbose="9" thread-count="1">
+	<test name="Functional Test" preserve-order="true">
+		<classes>
+			<class name="etl.test.Tests" />
+		</classes>
+	</test>
+</suite>
+
