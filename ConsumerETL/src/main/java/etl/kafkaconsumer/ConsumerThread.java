@@ -6,6 +6,9 @@ import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.apache.log4j.Logger;
+import org.json.simple.parser.ParseException;
+
+import etl.transformer.Transformer;
 
 /**
  * The Class ConsumerThread.
@@ -37,8 +40,18 @@ public class ConsumerThread implements Runnable {
 		while (true) {
 			ConsumerRecords<String, String> records = consumer.poll(100);
 			for (ConsumerRecord<String, String> record : records) {
-				logger.info("******Message:" + record.value() + " **** Partition: " + record.partition()
-				+ " **** Offset: " + record.offset());
+				logger.info("******Message red by  ThreadId: " + Thread.currentThread().getId() + " **** Partition: "
+						+ record.partition() + " **** Offset: " + record.offset());
+				try {
+					Transformer.transform(record.value());
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (java.text.ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
 			}
 		}
 	}
