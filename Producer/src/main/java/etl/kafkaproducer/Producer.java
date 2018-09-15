@@ -35,7 +35,6 @@ public class Producer {
 				throw new FileNotFoundException("Producer FIle '" + propFileName + "Not found");
 			}
 			servers = prop.getProperty(pName);
-			logger.info("****** Servers loaded from properties file");
 		} catch (Exception e) {
 			logger.info("Exception: " + e);
 		} finally {
