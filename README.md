@@ -1,5 +1,5 @@
-# ETL--Extract, Tranform, and Load
-
+# ETL-Extract, Tranform, and Load
+This Project is Java Maven based ETL, which can be easily integrated to any product. It is a complete package for multi-threaded ETL--It contains code, that can consume messages from  distributed Apache Kafka servers parallelly; Secondly, it has easily adaptable Hibernate interface for database operation; Additionally, It is also configured with Spring, to easily access and manage objects across the application--This project makes use of Apache Kafka for  data handling. Also, it also has a producer code for data generation, which can be easily attached to data sources.
 
 ## Getting Started
 
