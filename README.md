@@ -265,7 +265,7 @@ And the login table in Psql
 (30 rows)
 
 ```
-## Starting Piont--after Integration
+## Starting Point--after Integration
 After setting up the project the starting point for you, would be the class  etl.transformer.Tranformer.java
 
 ```
