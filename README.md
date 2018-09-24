@@ -43,7 +43,7 @@ if zookeeper is not running, use the following command to activate the zookeeper
 $ sudo systemctl enable zookeeper
 ```
 
-##### Step 2- Download and install Apache kafka
+##### Step 3- Download and install Apache kafka
 Navigate to ~/Downloads/ directory to download Kafka binaries
 ```
 $ cd ~/Downloads 
@@ -87,7 +87,7 @@ Finally to run kafka server run the following command
 $  sudo -i kafka-server-start.sh /etc/kafka.properties
 ```
 
-##### Step 3- Testing Apache kafka using Terminal
+##### Step 4- Testing Apache kafka using Terminal
 To test Apache kafka, open a new terminal tab and create a test topic using the following command
 ```
 $  sudo -i kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1   --topic testTopic --partitions 1
@@ -102,7 +102,7 @@ $  sudo -i kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic t
 ```
 Now type 'Hello' on the producer Terminal tab and you will also be able to see it on the consumer terminal tab.
 
-#### 2. Install and configure PostgreSQL on Debian/Ubuntu
+#### 5. Install and configure PostgreSQL on Debian/Ubuntu
  Install PostgreSQL using apt-get
 ```
 $  sudo apt-get install postgresql postgresql-contrib
@@ -166,7 +166,7 @@ Output:
  public | login    | table | etluser
 (2 rows)
 ```
-#### 2. Install Maven, to bulid a copy of your own
+#### 6. Install Maven, to bulid a copy of your own
 Open a new terminal and run:
 ```
 $ sudo apt-get install maven
@@ -265,7 +265,7 @@ And the login table in Psql
 (30 rows)
 
 ```
-## Starting Point--after Integration
+## Starting Point
 After setting up the project the starting point for you, would be the class  etl.transformer.Tranformer.java
 
 ```
