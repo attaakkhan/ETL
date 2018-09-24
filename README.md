@@ -265,3 +265,32 @@ And the login table in Psql
 (30 rows)
 
 ```
+## Starting Piont--after Integration
+After setting up the project the starting point for you, would be the class  etl.transformer.Tranformer.java
+
+```
+public class Transformer {
+
+
+...........
+.....
+...
+..
+	/**
+	 * Tranaform data in messeges and Load to psql
+	 * 
+	 * @throws ParseException
+	 * @throws                java.text.ParseException
+	 */
+	public static void transform(String msg) throws ParseException, java.text.ParseException {
+		JSONParser parser = new JSONParser();
+		JSONObject json = (JSONObject) parser.parse(msg);
+		JSONObject person = (JSONObject) parser.parse(json.get("Person").toString());
+  ...
+  ..
+  .
+```
+The method Transformer.transform(msg) will be called when ever there is data avialable on kafka brokers, By using this method data transformation can be done according to the requirments.
+
+Note:You will also need to add pojo and hibernateImpl classes in the project under the packages etl.pojo and etl.dao.psotgreImpl, respectively--According to the schemas of Database you are using.
+
