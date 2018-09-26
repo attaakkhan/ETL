@@ -102,7 +102,7 @@ $  sudo -i kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic t
 ```
 Now type 'Hello' on the producer Terminal tab and you will also be able to see it on the consumer terminal tab.
 
-#### 5. Install and configure PostgreSQL on Debian/Ubuntu
+#### 2. Install and configure PostgreSQL on Debian/Ubuntu
  Install PostgreSQL using apt-get
 ```
 $  sudo apt-get install postgresql postgresql-contrib
@@ -166,7 +166,7 @@ Output:
  public | login    | table | etluser
 (2 rows)
 ```
-#### 6. Install Maven, to bulid a copy of your own
+#### 3. Install Maven, to bulid a copy of your own
 Open a new terminal and run:
 ```
 $ sudo apt-get install maven
@@ -225,7 +225,7 @@ Run the ETL Consumer
 ```
 $ java -jar target/ConsumerETL.jar
 ```
-Now the log has been tarnformed and loaded to psql Database.
+Now the log has been tarnsformed and loaded to psql Database.
 
 Here is the activity table in Psql
 ```
