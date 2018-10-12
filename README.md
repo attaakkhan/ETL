@@ -114,8 +114,8 @@ $  sudo -u postgres createuser --interactive --pwprompt
 ```
 Output:
 Enter name of role to add: etluser
-Enter password for new role: 
-Enter it again: 
+Enter password for new role:etluser 
+Enter it again:etluser 
 Shall the new role be a superuser? (y/n) y
 ```
 Create Database under etl user
